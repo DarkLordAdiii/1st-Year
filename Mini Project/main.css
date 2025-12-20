@@ -1,61 +1,196 @@
-*{
-    margin: 0%;
-    padding: 0%;
+* {
+    padding: 0;
+    margin: 0;
 }
 
-.background{
-    position: relative;
+body {
+    /* min-height: 100vh; */
+    /* width: 100vw; */
     height: 100vh;
-    width: 100%;
-    overflow: hidden;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.3)50%, rgba(0, 0, 0, 0.3)50%), url(images/index.jpg);
+    background-position: center;
+    background-size: cover;
+    /* overflow: hidden; */
 }
 
-.background video{
-    position: absolute;
-    /* top: 50%;
-    left: 50%; */
-    min-width: 100%;
-    min-height: 100%;
-    /* transform: translate(-50%,-50%); */
-    object-fit: cover;
-    /* z-index: -1; */
+.top .navbar ul {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    gap: 60px;
 }
 
-.content{
-    font-size: 50px;
+.top .navbar ul li {
+    list-style: none;
     font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    margin: 0;
+    /* remove extra spacing */
+}
+
+.top .navbar ul li a {
     position: relative;
+    text-decoration: none;
     color: white;
-    text-align: center;
-    padding-top: 40vh;
+    font-family: "DM Sans", sans-serif;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+}
+
+.navbar ul li a:hover {
+    color: orange;
+    box-shadow: 0 25px 60px rgba(255, 166, 0, 0.98);
+}
+
+.top .navbar ul li a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    /* start at center */
+    bottom: -3px;
+    width: 0;
+    /* start invisible */
+    height: 2px;
+    background: orange;
+    /* underline color */
+    transform: translateX(-50%);
+    transition: width 0.3s ease-in-out;
+}
+
+.top .navbar ul li a:hover::after {
+    width: 100%;
+}
+
+.container {
+    /* min-height: 100vh; */
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    /* horizontal */
+    align-items: center;
+    /* vertical */
+    opacity: 0;
+    animation: fadeInUp 1.2s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
 
-    /* glow added */
-    text-shadow:
-        0 0 10px rgba(255, 255, 255, 0.35),
-        0 0 25px rgba(255, 200, 0, 0.45);
+    max-width: 420px;
+    padding: 24px 28px;
+
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(10px);
+    border-radius: 22px;
+    box-shadow:
+        0 16px 35px rgba(0, 0, 0, 0.7),
+        /* depth */
+        0 0 22px rgba(160, 120, 255, 0.45),
+        /* soft purple glow */
+        0 0 60px rgba(140, 90, 255, 0.85);
+
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.content:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 22px 55px rgba(0, 0, 0, 0.8),
+        0 0 35px rgba(180, 140, 255, 0.65),
+        0 0 85px rgba(160, 120, 255, 1);
 }
 
 
-.content .button .join{
-    background: linear-gradient(
-        135deg,
-        rgb(255, 196, 0),
-        rgb(255, 170, 0)
-    );
-    padding: 12px 22px;
-    color: black;
-    border: none;
-    font-size: 22px;
-    border-radius: 28px;
-    text-decoration: none;
-    cursor: pointer;
-    font-family: "DM Sans", sans-serif;
 
-    /* glow */
+
+.content .heading {
+    font-size: 60px;
+    color: white;
+    text-shadow: 0 0 10px white;
+    /* font-weight: bold; */
+    font-family: "Germania One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    margin: 4px 0 16px;
+}
+
+.content .subheading {
+    font-size: 50px;
+    color: rgb(38, 168, 38);
+    text-shadow: 0 0 10px rgb(38, 168, 38);
+    font-family: "Germania One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-weight: bold;
+    margin: 4px 0 16px;
+}
+
+.content .p-text {
+    font-size: 22px;
+    color: whitesmoke;
+    font-family: "Germania One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.navbar ul .auth a {
+    padding: 6px 14px;
+    border: 1px solid #fff;
+    border-radius: 6px;
+    transition: 0.3s ease;
+}
+
+.navbar ul .auth a:hover {
+    background: orange;
+    color: black;
+}
+
+.content .cta-button {
+    margin-top: 18px;
+    opacity: 1;
+    animation: fadeIn 1s ease-out 0.9s forwards;
+}
+
+.content .cta-button a {
+    display: inline-block;
+    padding: 14px 22px;
+
+    background: linear-gradient(135deg,
+            rgb(140, 100, 255),
+            rgb(110, 70, 220));
+
+    color: white;
+    text-decoration: none;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 16px;
+
     box-shadow:
-        0 6px 16px rgba(0, 0, 0, 0.5),
-        0 0 18px rgba(255, 200, 0, 0.45);
+        0 8px 20px rgba(0, 0, 0, 0.6),
+        /* depth */
+        0 0 18px rgba(160, 120, 255, 0.45),
+        /* inner purple glow */
+        0 0 40px rgba(140, 90, 255, 0.75);
+    /* outer glow */
 
     transition:
         transform 0.35s ease,
@@ -64,17 +199,73 @@
 }
 
 
-.content .button .join:hover{
-    transform: scale(1.08);
+.content .cta-button a:hover {
+    transform: translateY(-4px);
 
-    background: linear-gradient(
-        135deg,
-        rgb(255, 210, 40),
-        rgb(255, 180, 0)
-    );
+    background: linear-gradient(135deg,
+            rgb(160, 120, 255),
+            rgb(130, 90, 235));
 
     box-shadow:
-        0 12px 30px rgba(0, 0, 0, 0.75),
-        0 0 35px rgba(255, 220, 0, 0.8),
-        0 0 65px rgba(255, 200, 0, 1);
+        0 14px 35px rgba(0, 0, 0, 0.75),
+        0 0 30px rgba(180, 140, 255, 0.6),
+        0 0 65px rgba(160, 120, 255, 1);
 }
+
+
+/* Responsive Design
+        @media (max-width: 768px) {
+            .navbar ul {
+                gap: 30px;
+                padding: 15px;
+            }
+
+            .navbar ul li {
+                font-size: 13px;
+            }
+
+            .navbar ul .auth a {
+                padding: 6px 16px;
+                font-size: 13px;
+            }
+
+            .content {
+                padding: 36px 28px;
+                max-width: 90%;
+            }
+
+            .content .heading {
+                font-size: 22px;
+            }
+
+            .content .subheading {
+                font-size: 48px;
+            }
+
+            .content .p-text {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar ul {
+                gap: 20px;
+            }
+
+            .content .heading {
+                font-size: 20px;
+            }
+
+            .content .subheading {
+                font-size: 36px;
+            }
+
+            .content .p-text {
+                font-size: 15px;
+            }
+
+            .content .cta-button a {
+                padding: 12px 24px;
+                font-size: 15px;
+            }
+        } */
